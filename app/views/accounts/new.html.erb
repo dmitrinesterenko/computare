@@ -1,0 +1,9 @@
+<h1>New account</h1>
+
+<%= form_for @account do |f| %>
+<%=  f.label :name %>
+<%=  f.text_field :name %>
+<%=  select_tag :currency, options_for_select(["USD","BTC"], "USD") %>
+<%=  f.button :submit, :name=>'Submit' %>
+<% end %>
+<%= link_to 'Back', accounts_path %>

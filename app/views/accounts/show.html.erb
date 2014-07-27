@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<%= form_for :transaction do |f| %>
+<%=  f.label :amount %>
+<%=  f.text_field :amount %>
+<%=  f.label :notes %>
+<%=  f.text_area :notes %>
+<%=  f.label :type %>
+<%=  select_tag :type, options_for_select(["Transfer", "Withdrawal", "Deposit"],
+	"Transfer") %>
+<%=  f.label :currency %>
+<%=  select_tag :currency, options_for_select(["USD","BTC"], "USD") %>
+<%= f.label 'If transfer, select an account' %>
+<%=  select_tag :to_account,
+    content_tag(:option,'not a transfer...',:value=>"") + options_from_collection_for_select(Account.all, "id", "name") %>
+   
+<% end %>
+  
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
